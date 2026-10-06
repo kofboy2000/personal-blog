@@ -30,7 +30,7 @@ const posts = Object.values(postImportResult)
   <div class="subscribe-box">
     <h2>Subscribe</h2>
     <p>If you want to stay up to date with my latest posts you can sign up to my newsletter. I promise I won't spam you.</p>
-    <form class="subscribe-form" action="/subscribe" method="get">
+    <form class="subscribe-form" action={`${import.meta.env.BASE_URL}/subscribe`} method="get">
       <input type="email" name="email" placeholder="you@example.com" required />
       <button type="submit">Subscribe</button>
     </form>

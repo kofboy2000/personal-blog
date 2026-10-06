@@ -35,9 +35,12 @@ def extract_meta(nb):
     cell = nb.get("cells", [])
     if cell and cell[0].get("cell_type") == "raw":
         try:
-            parsed = json.loads(cell[0].get("source", ""))
+            source = cell[0].get("source", "")
+            if isinstance(source, list):
+                source = "".join(source)
+            parsed = json.loads(source)
             meta.update(parsed)
-        except json.JSONDecodeError:
+        except (json.JSONDecodeError, TypeError):
             pass
     return meta
 
@@ -102,6 +105,13 @@ def main():
                 img.unlink()
             assets_src.rmdir()
 
+        # Strip the metadata raw cell's JSON from the converted Markdown body.
+        body = converted.read_text(encoding="utf-8")
+        meta_json = json.dumps(meta, indent=2)
+        for snippet in (meta_json, json.dumps(meta)):
+            body = body.replace(snippet, "")
+        body = body.lstrip("\n")
+
         tags = meta.get("tags", [])
         if isinstance(tags, list):
             tags = [str(t) for t in tags]
@@ -117,10 +127,7 @@ def main():
             "---",
             "",
         ]
-        md_path.write_text(
-            "\n".join(front) + converted.read_text(encoding="utf-8"),
-            encoding="utf-8",
-        )
+        md_path.write_text("\n".join(front) + body, encoding="utf-8")
         converted.unlink()
         print(f"Converted {nb_path.name} -> {md_path}")
 

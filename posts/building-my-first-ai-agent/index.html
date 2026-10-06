@@ -1,0 +1,23 @@
+<!DOCTYPE html><p>I finally built my first fully autonomous AI agent, and it was equal parts magical and humbling. Here’s what I learned.</p>
+<h2 id="the-planning-loop-matters-more-than-the-model">The planning loop matters more than the model</h2>
+<p>I started with a naive “LLM-in-a-loop” approach — send a prompt, get an action, execute it, repeat. It worked… sometimes. The breakthrough came when I added <strong>explicit planning</strong>: forcing the agent to write out a step-by-step plan before acting, and to revise that plan after every tool call.</p>
+<pre class="astro-code github-light" style="background-color:#fff;color:#24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#D73A49">while</span><span style="color:#D73A49"> not</span><span style="color:#24292E"> task_complete:</span></span>
+<span class="line"><span style="color:#24292E">    plan </span><span style="color:#D73A49">=</span><span style="color:#24292E"> llm(</span><span style="color:#032F62">"Given the goal and current state, what's the plan?"</span><span style="color:#24292E">)</span></span>
+<span class="line"><span style="color:#24292E">    action </span><span style="color:#D73A49">=</span><span style="color:#24292E"> llm(</span><span style="color:#032F62">"Execute the next step of the plan."</span><span style="color:#24292E">)</span></span>
+<span class="line"><span style="color:#24292E">    result </span><span style="color:#D73A49">=</span><span style="color:#24292E"> tools.execute(action)</span></span>
+<span class="line"><span style="color:#24292E">    memory.append(action, result)</span></span></code></pre>
+<h2 id="memory-is-harder-than-it-looks">Memory is harder than it looks</h2>
+<p>Short-term memory (the current conversation) is easy. The hard part is <strong>long-term memory</strong> — deciding what’s worth remembering across sessions. I ended up with a simple three-tier approach:</p>
+<ol>
+<li><strong>Scratchpad</strong> — everything from the current task</li>
+<li><strong>Episodic</strong> — summaries of past tool executions</li>
+<li><strong>Semantic</strong> — a vector store of distilled facts</li>
+</ol>
+<h2 id="failure-modes-to-watch-for">Failure modes to watch for</h2>
+<ul>
+<li><strong>Loop addiction</strong> — the agent repeats the same failing action forever</li>
+<li><strong>Hallucinated tool outputs</strong> — it “remembers” results that never happened</li>
+<li><strong>Scope creep</strong> — a simple task balloons into a 40-step saga</li>
+</ul>
+<p>Overall: agents are 20% model, 80% scaffolding. The intelligence is real, but the engineering around it is what makes it useful.</p>
+<p>More experiments coming soon — subscribe to follow along.</p>

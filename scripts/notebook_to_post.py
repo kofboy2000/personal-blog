@@ -96,7 +96,7 @@ def main():
                 (assets_dir / img.name).write_bytes(img.read_bytes())
             # Rewrite image links in the Markdown to the public path.
             body = converted.read_text(encoding="utf-8")
-            body = body.replace(f"{nb_path.stem}_files/", f"/notebook-assets/{nb_path.stem}/")
+            body = body.replace(f"{nb_path.stem}_files/", f"/personal-blog/notebook-assets/{nb_path.stem}/")
             converted.write_text(body, encoding="utf-8")
             for img in assets_src.iterdir():
                 img.unlink()

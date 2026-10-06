@@ -6,12 +6,12 @@ import { SITE } from '../config';
   <div class="container footer-inner">
     <p>© {new Date().getFullYear()} {SITE.author}. All rights reserved.</p>
     <nav class="footer-nav">
-      <a href="/rss.xml">RSS</a>
-      <a href="/feed.json">JSON</a>
+      <a href={`${import.meta.env.BASE_URL}/rss.xml`}>RSS</a>
+      <a href={`${import.meta.env.BASE_URL}/feed.json`}>JSON</a>
       <a href={SITE.social.github}>GitHub</a>
       <a href={SITE.social.twitter}>Twitter/X</a>
       <a href={SITE.social.email}>Contact</a>
-      <a href="/privacy">Privacy</a>
+      <a href={`${import.meta.env.BASE_URL}/privacy`}>Privacy</a>
     </nav>
   </div>
 </footer>

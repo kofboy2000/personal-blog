@@ -9,12 +9,12 @@ export async function GET() {
     JSON.stringify({
       version: 'https://jsonfeed.org/version/1',
       title: 'AI Notebook',
-      home_page_url: 'https://my-ai-blog.pages.dev',
-      feed_url: 'https://my-ai-blog.pages.dev/feed.json',
+      home_page_url: 'https://kofboy2000.github.io/personal-blog',
+      feed_url: 'https://kofboy2000.github.io/personal-blog/feed.json',
       description: 'Notes on AI, LLMs, AI Agents, AI movies, animation and manga.',
       items: sorted.map((p: any) => ({
-        id: 'https://my-ai-blog.pages.dev' + p.url,
-        url: 'https://my-ai-blog.pages.dev' + p.url,
+        id: 'https://kofboy2000.github.io/personal-blog' + p.url,
+        url: 'https://kofboy2000.github.io/personal-blog' + p.url,
         title: p.frontmatter.title,
         date_published: new Date(p.frontmatter.date).toISOString(),
         tags: p.frontmatter.tags,

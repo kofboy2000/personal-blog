@@ -38,7 +38,7 @@ const fmt = (d: Date) =>
   <div class="subscribe-box">
     <h2>Enjoyed this post?</h2>
     <p>Subscribe to get new posts in your inbox. No spam, ever.</p>
-    <form class="subscribe-form" action="/subscribe" method="get">
+    <form class="subscribe-form" action={`${import.meta.env.BASE_URL}/subscribe`} method="get">
       <input type="email" name="email" placeholder="you@example.com" required />
       <button type="submit">Subscribe</button>
     </form>

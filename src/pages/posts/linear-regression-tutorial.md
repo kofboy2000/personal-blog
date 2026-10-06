@@ -71,7 +71,7 @@ plt.show()
 
 
     
-![png](/notebook-assets/linear-regression-tutorial/linear-regression-tutorial_7_0.png)
+![png](/personal-blog/notebook-assets/linear-regression-tutorial/linear-regression-tutorial_7_0.png)
     
 
 
@@ -95,7 +95,7 @@ plt.show()
 
 
     
-![png](/notebook-assets/linear-regression-tutorial/linear-regression-tutorial_9_0.png)
+![png](/personal-blog/notebook-assets/linear-regression-tutorial/linear-regression-tutorial_9_0.png)
     
 
 

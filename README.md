@@ -19,6 +19,33 @@ Your content here...
 
 Set `draft: true` in the frontmatter to hide a post.
 
+## Posting Jupyter notebooks
+
+You can turn a Jupyter notebook into a blog post **without writing any Markdown** — the notebook itself becomes the post, including its code, outputs, and plots.
+
+1. Put your notebook in `notebooks/` (e.g. `notebooks/my-tutorial.ipynb`).
+2. Add a **raw cell at the very top** of the notebook containing the post metadata as JSON:
+
+   ```json
+   {
+     "title": "My Tutorial Title",
+     "description": "Short excerpt for the homepage and feeds.",
+     "date": "2025-04-01",
+     "tags": ["tutorial", "machine-learning"]
+   }
+   ```
+
+3. Run the conversion script:
+
+   ```bash
+   pip install nbconvert jupyter matplotlib  # plus whatever your notebook imports
+   python scripts/notebook_to_post.py        # converts all notebooks in notebooks/
+   ```
+
+The script **executes the notebook** (so plots/outputs are always fresh), converts it to Markdown with outputs embedded, copies the generated images to `public/notebook-assets/<notebook-name>/`, and writes the final post to `src/pages/posts/<notebook-name>.md` with front matter prepended. Commit and push — the post goes live with the rest of the blog.
+
+The converted `.md` and assets are checked in, so Cloudflare never needs Python — the notebook pipeline runs only on your machine.
+
 ## Development
 
 ```bash

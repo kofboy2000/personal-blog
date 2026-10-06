@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import PostCard from '../components/PostCard.astro';
+
+const postImportResult = import.meta.glob('./posts/*.{md,mdx}', { eager: true });
+const posts = Object.values(postImportResult)
+  .filter((p: any) => !p.frontmatter.draft)
+  .sort((a: any, b: any) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+---
+
+<Base>
+  <section class="hero">
+    <h1>Hey there. 👋</h1>
+    <p>I'm Alex. I write about AI — LLMs, agents, and the weird new world of AI movies, animation and manga.</p>
+  </section>
+
+  <h2 class="section-title">Latest Posts</h2>
+  <div class="post-list">
+    {posts.map((p: any) => (
+      <PostCard
+        title={p.frontmatter.title}
+        description={p.frontmatter.description}
+        date={new Date(p.frontmatter.date)}
+        url={p.url}
+        tags={p.frontmatter.tags}
+      />
+    ))}
+  </div>
+
+  <div class="subscribe-box">
+    <h2>Subscribe</h2>
+    <p>If you want to stay up to date with my latest posts you can sign up to my newsletter. I promise I won't spam you.</p>
+    <form class="subscribe-form" action="/subscribe" method="get">
+      <input type="email" name="email" placeholder="you@example.com" required />
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</Base>

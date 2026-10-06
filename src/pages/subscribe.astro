@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Subscribe">
+  <section class="hero">
+    <h1>Subscribe</h1>
+    <p>Get new posts delivered straight to your inbox.</p>
+  </section>
+
+  <div class="prose">
+    <p>
+      If you want to stay up to date with my latest posts you can sign up to my newsletter.
+      I promise I won't spam you. (To be honest, I'm not the best at keeping up with a newsletter schedule...)
+    </p>
+    <form class="subscribe-form" action="https://listmonk.example.com/subscribe" method="post">
+      <input type="email" name="email" placeholder="you@example.com" required />
+      <button type="submit">Subscribe</button>
+    </form>
+    <p style="margin-top:1rem;font-size:0.85rem;color:#6b7280;">
+      Prefer RSS? Subscribe via <a href="/rss.xml">the feed</a> instead.
+    </p>
+  </div>
+</Base>

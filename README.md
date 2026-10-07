@@ -42,7 +42,14 @@ You can turn a Jupyter notebook into a blog post **without writing any Markdown*
    python scripts/notebook_to_post.py        # converts all notebooks in notebooks/
    ```
 
-The script **executes the notebook** (so plots/outputs are always fresh), converts it to Markdown with outputs embedded, copies the generated images to `public/notebook-assets/<notebook-name>/`, and writes the final post to `src/pages/posts/<notebook-name>.md` with front matter prepended. Commit and push — the post goes live with the rest of the blog.
+The script **executes the notebook** (so plots/outputs are always fresh) and converts it to Markdown with outputs embedded, copies the generated images to `public/notebook-assets/<notebook-name>/`, and writes the final post to `src/pages/posts/<notebook-name>.md` with front matter prepended. Commit and push — the post goes live with the rest of the blog.
+
+The script also generates **nbconvert HTML notebook versions** of each notebook, embedded as-is on dedicated pages in two layouts so you can compare designs:
+
+* `/notebooks/<notebook-name>-full` — notebook content spans the full screen width (like the [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/05.06-linear-regression.html) pages)
+* `/notebooks/<notebook-name>-centered` — notebook content is centered and occupies a fixed max width (920px)
+
+The classic Markdown post remains available at `/posts/<notebook-name>`.
 
 The converted `.md` and assets are checked in, so Cloudflare never needs Python — the notebook pipeline runs only on your machine.
 

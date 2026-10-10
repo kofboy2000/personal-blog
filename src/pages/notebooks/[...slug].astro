@@ -1,0 +1,22 @@
+---
+import NotebookPost from '../../layouts/NotebookPost.astro';
+
+export async function getStaticPaths() {
+  const postImportResult = import.meta.glob('../../notebook-html/*.json', { eager: true });
+  return Object.entries(postImportResult).map(([path, mod]) => ({
+    params: { slug: path.replace('../../notebook-html/', '').replace(/\.json$/, '') },
+    props: { post: (mod as any).default ?? mod },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<NotebookPost
+  title={post.title}
+  description={post.description}
+  html={post.html}
+  date={post.date}
+  tags={post.tags}
+  layout={post.layout}
+/>

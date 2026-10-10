@@ -317,3 +317,140 @@ a:hover {
     flex-direction: column;
   }
 }
+
+/* Notebook post pages (raw nbconvert HTML embedded via set:html) */
+.notebook-main {
+  flex: 1;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+}
+
+.notebook-page.layout-full .notebook-main {
+  width: 100%;
+  max-width: none;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.notebook-page.layout-centered .notebook-main {
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.notebook-body {
+  color: #2d2d2d;
+  line-height: 1.65;
+}
+
+.notebook-body h1 {
+  display: none; /* post title already rendered in the header */
+}
+
+.notebook-body h2 {
+  margin-top: 2.6rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+}
+
+.notebook-body h3 {
+  margin-top: 1.8rem;
+  font-size: 1.1rem;
+}
+
+.notebook-body img {
+  max-width: 100%;
+  border-radius: var(--radius);
+  display: block;
+  margin: 1.6rem auto;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.notebook-body a {
+  color: var(--accent);
+}
+
+.notebook-body code {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  background: var(--code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.88em;
+}
+
+.notebook-body .input_area,
+.notebook-body .inner_cell,
+.notebook-body .highlight {
+  background: transparent !important;
+}
+
+.notebook-body pre {
+  background: #0d1117 !important;
+  color: #e6edf3 !important;
+  padding: 1.1rem 1.3rem;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  margin: 1.6rem 0;
+  border: 1px solid #30363d;
+}
+
+.notebook-body pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+  display: block;
+}
+
+.notebook-body .input_area pre {
+  margin: 0.6rem 0;
+}
+
+.notebook-body .output_area {
+  background: #fafafa;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  margin: 0.4rem 0 1.2rem;
+  overflow-x: auto;
+}
+
+.notebook-body .output_area pre {
+  background: none !important;
+  color: var(--fg) !important;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notebook-body .output_area img {
+  margin: 0.4rem auto;
+}
+
+.notebook-body blockquote {
+  border-left: 3px solid var(--accent);
+  margin: 1.5rem 0;
+  padding: 0.1rem 1.2rem;
+  color: var(--muted);
+}
+
+.notebook-body table {
+  border-collapse: collapse;
+  margin: 1.6rem 0;
+  width: 100%;
+  font-size: 0.92rem;
+}
+
+.notebook-body th,
+.notebook-body td {
+  border: 1px solid var(--border);
+  padding: 0.45rem 0.7rem;
+  text-align: left;
+}

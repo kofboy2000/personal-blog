@@ -16,4 +16,4 @@ This site is where I'll collect my notes. Expect posts on:
 - **AI Movies & Animation** — the tools and creative experiments
 - **AI Manga** — how AI is reshaping visual storytelling
 
-If that sounds like your kind of thing, consider subscribing to the newsletter. See you in the next post!
+If that sounds like your kind of thing, follow new posts through the [RSS feed](https://kofboy2000.github.io/personal-blog/rss.xml). See you in the next post!

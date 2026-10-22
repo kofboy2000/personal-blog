@@ -2,28 +2,32 @@
 import Base from '../layouts/Base.astro';
 ---
 
-<Base title="About">
+<Base title="소개">
   <section class="hero">
-    <h1>About</h1>
-    <p>Who I am and what this site is about.</p>
+    <h1>송태의 · Taieui Song</h1>
+    <p>AI를 실제 제품으로 연결하는 엔지니어</p>
   </section>
 
   <div class="prose">
     <p>
-      Hey — I'm Alex. By day I work with technology; by night I'm deep in the AI rabbit hole.
-      This blog is my notebook for everything I find interesting across the AI landscape.
+      삼성전자에서 Android 플랫폼과 Bixby의 LLM 응용을 개발해 온 소프트웨어 엔지니어입니다.
+      모바일 소프트웨어에서 출발해 서울대학교에서 석사 과정을 마쳤고, 지금은 LLM을 검색·도구·응답 생성과 연결하는 일을 하고 있습니다.
     </p>
-    <p>Things I write about:</p>
+    <p lang="en">I'm Taieui Song, a Principal Software Engineer at Samsung Electronics. My background spans Android platforms and LLM-powered Bixby. I write about applied AI, software engineering, and making things.</p>
+    <h2>이곳에 기록할 것</h2>
     <ul>
-      <li><strong>LLMs</strong> — new model releases, prompt engineering, evaluation and tooling.</li>
-      <li><strong>AI Agents</strong> — autonomous workflows, multi-agent systems, and agent frameworks.</li>
-      <li><strong>AI Movies</strong> — how generative AI is changing filmmaking, from scripts to VFX.</li>
-      <li><strong>AI Animation</strong> — experiments and tools for AI-generated animation.</li>
-      <li><strong>AI Manga</strong> — the explosion of AI-assisted manga and webtoon creation.</li>
+      <li><strong>AI와 제품</strong> — 모델을 검색, 도구, 사용자 경험에 연결하는 소프트웨어 설계.</li>
+      <li><strong>연구와 구현</strong> — 공개 논문과 기술을 읽고, 구현하며 확인하는 과정.</li>
+      <li><strong>직접 만들기</strong> — 개인 앱과 AI 도구를 활용한 영상·애니메이션·만화 등 제작에 관한 기록.</li>
     </ul>
-    <p>
-      If any of that sounds interesting, consider <a href={`${import.meta.env.BASE_URL}/subscribe`}>subscribing</a> —
-      you'll get my latest posts in your inbox. No spam, ever.
-    </p>
+    <h2 id="selected">발표와 연구</h2>
+    <ul>
+      <li><a href="https://aclanthology.org/2026.findings-eacl.327/">FINEST: Improving LLM Responses to Sensitive Topics Through Fine-Grained Evaluation</a> — Findings of EACL 2026 공동저자.</li>
+      <li><a href="https://kr.linkedin.com/posts/pyconkorea_%ED%8C%8C%EC%9D%B4%EC%BD%98-%ED%95%9C%EA%B5%AD-2026-%EC%84%B8%EC%85%98-%EB%AF%B8%EB%A6%AC%EB%B3%B4%EA%B8%B0-make-it-happy-activity-7493101275245535232-82xK">PyCon Korea 2026 · LLM아 친하게 지내자 이제 반말 해봐</a> — steering vector를 활용한 응답 스타일 제어 발표. 링크는 주최자의 세션 소개입니다.</li>
+      <li><a href="https://2021.pycon.kr/session/12/">PyCon Korea 2021 · 시계열 데이터를 이미지로 다루는 기술</a> — 데이터 표현과 딥러닝에 관한 발표.</li>
+    </ul>
+    <h2>연결하기</h2>
+    <p><a href="https://www.linkedin.com/in/taieui-song">LinkedIn</a> · <a href="https://github.com/kofboy2000">GitHub</a></p>
+    <p>이곳의 글은 개인 기록이며 소속 조직의 공식 입장을 대변하지 않습니다.</p>
   </div>
 </Base>

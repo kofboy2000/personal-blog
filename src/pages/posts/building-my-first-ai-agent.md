@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/Post.astro'
 title: 'Building My First AI Agent: Lessons Learned'
 description: 'What I learned building an autonomous AI agent with tool use — planning loops, memory, and failure modes.'
 date: '2025-02-02'

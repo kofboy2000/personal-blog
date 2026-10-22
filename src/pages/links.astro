@@ -1,0 +1,119 @@
+---
+import { SITE } from '../config';
+import '../styles/global.css';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const blogUrl = new URL(`${base}/`, Astro.site).href;
+const hubUrl = new URL(`${base}/links/`, Astro.site).href;
+const markUrl = `${base}/teimakes-mark.png`;
+const links = [
+  { label: 'Blog', href: blogUrl },
+  ...Object.entries(SITE.social).map(([label, href]) => ({ label, href })),
+];
+const pageTitle = `${SITE.title} — ${SITE.author}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageTitle} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={hubUrl} />
+    <meta property="og:image" content={new URL(markUrl, Astro.site).href} />
+    <link rel="canonical" href={hubUrl} />
+    <link rel="icon" href={markUrl} type="image/png" />
+  </head>
+  <body>
+    <main class="links-page">
+      <div class="links-identity">
+        <img src={markUrl} class="links-mark" width="112" height="112" alt="" />
+        <h1>{SITE.title}</h1>
+        <p>{SITE.author}</p>
+      </div>
+      <nav class="channel-links" aria-label="Links">
+        {links.map(({ label, href }, index) => (
+          <a href={href} class:list={[{ primary: index === 0 }]} rel={index === 0 ? undefined : 'me'}>
+            <span>{label}</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </nav>
+    </main>
+  </body>
+</html>
+
+<style>
+  .links-page {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 3rem;
+  }
+
+  .links-identity {
+    margin-bottom: 1.75rem;
+    text-align: center;
+  }
+
+  .links-mark {
+    display: block;
+    width: 112px;
+    height: 112px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+  }
+
+  .links-identity h1 {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+
+  .links-identity p {
+    margin: 0.4rem 0 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .channel-links {
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .channel-links a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 48px;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--fg);
+    font-size: 1rem;
+  }
+
+  .channel-links a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .channel-links a.primary {
+    border-color: var(--brand-orange);
+    background: var(--brand-orange);
+    font-weight: 700;
+  }
+
+  .channel-links a.primary:hover {
+    border-color: var(--fg);
+    background: var(--fg);
+    color: var(--bg);
+  }
+</style>

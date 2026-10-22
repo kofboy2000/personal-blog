@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/Post.astro'
 title: 'Hello, World: Why I Started This Blog'
 description: 'A short intro to what this blog is about — my notebook for everything AI: LLMs, agents, movies, animation, and manga.'
 date: '2025-01-15'

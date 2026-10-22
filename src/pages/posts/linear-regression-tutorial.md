@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/Post.astro'
 title: "Linear Regression Tutorial: From Data to Fit"
 description: "A hands-on linear regression walkthrough with scikit-learn \u2014 synthetic data, model fitting, and visual analysis of the results."
 date: "2025-04-05"

@@ -3,15 +3,17 @@ import { SITE } from '../config';
 ---
 
 <footer class="site-footer">
-  <div class="container footer-inner">
-    <p>© {new Date().getFullYear()} {SITE.author}. All rights reserved.</p>
-    <nav class="footer-nav">
-      <a href={`${import.meta.env.BASE_URL}/rss.xml`}>RSS</a>
-      <a href={`${import.meta.env.BASE_URL}/feed.json`}>JSON</a>
-      <a href={SITE.social.github}>GitHub</a>
-      <a href={SITE.social.twitter}>Twitter/X</a>
-      <a href={SITE.social.email}>Contact</a>
-      <a href={`${import.meta.env.BASE_URL}/privacy`}>Privacy</a>
+  <div class="container">
+    <nav class="social-links" aria-label="Social profiles">
+      {Object.entries(SITE.social).map(([label, href]) => <a href={href} rel="me">{label}</a>)}
     </nav>
+    <div class="footer-inner">
+      <p>© {new Date().getFullYear()} {SITE.author}. All rights reserved.</p>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href={`${import.meta.env.BASE_URL}/rss.xml`}>RSS</a>
+        <a href={`${import.meta.env.BASE_URL}/feed.json`}>JSON</a>
+        <a href={`${import.meta.env.BASE_URL}/privacy`}>Privacy</a>
+      </nav>
+    </div>
   </div>
 </footer>

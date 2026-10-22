@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/Post.astro'
 title: 'The State of AI Animation in 2025'
 description: 'A tour of the current AI animation landscape — video models, pipeline tools, and where manga-style generation is heading.'
 date: '2025-03-10'

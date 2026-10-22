@@ -1,3 +1,5 @@
+import { SITE } from '../config';
+
 export async function GET() {
   const postImportResult = import.meta.glob('./posts/*.{md,mdx}', { eager: true });
   const posts = Object.values(postImportResult);
@@ -8,13 +10,13 @@ export async function GET() {
   return new Response(
     JSON.stringify({
       version: 'https://jsonfeed.org/version/1',
-      title: 'AI Notebook',
+      title: SITE.title,
       home_page_url: 'https://kofboy2000.github.io/personal-blog',
       feed_url: 'https://kofboy2000.github.io/personal-blog/feed.json',
-      description: 'Notes on AI, LLMs, AI Agents, AI movies, animation and manga.',
+      description: SITE.description,
       items: sorted.map((p: any) => ({
-        id: 'https://kofboy2000.github.io/personal-blog' + p.url,
-        url: 'https://kofboy2000.github.io/personal-blog' + p.url,
+        id: new URL(p.url, 'https://kofboy2000.github.io').href,
+        url: new URL(p.url, 'https://kofboy2000.github.io').href,
         title: p.frontmatter.title,
         date_published: new Date(p.frontmatter.date).toISOString(),
         tags: p.frontmatter.tags,

@@ -1,6 +1,10 @@
-# AI Notebook — Personal AI Blog
+# 송태의 · AI & 제품
 
-A minimal, clean personal blog focused on AI, LLMs, AI Agents, AI Movies, AI Animation and AI Manga. Built with [Astro](https://astro.build), posts written in Markdown, hosted on **Cloudflare Pages**.
+Taieui Song's personal blog about applied AI, product engineering, research, and making things. Built with [Astro](https://astro.build), with Markdown posts and GitHub Pages hosting.
+
+Public site: https://kofboy2000.github.io/personal-blog/
+
+The `drafts/` directory holds material awaiting author review. It is outside `src/pages/` and is not published to the website. Existing posts are preserved; a new author introduction is available as a draft.
 
 ## Writing posts
 
@@ -51,7 +55,7 @@ The script also generates **nbconvert HTML notebook versions** of each notebook,
 
 The classic Markdown post remains available at `/posts/<notebook-name>`.
 
-The converted `.md` and assets are checked in, so Cloudflare never needs Python — the notebook pipeline runs only on your machine.
+The converted `.md` and assets are checked in, so the GitHub Pages build does not need Python — the notebook pipeline runs only on your machine.
 
 ## Development
 
@@ -62,27 +66,16 @@ npm run build     # production build to ./dist
 npm run preview   # preview the production build
 ```
 
-## Deploying to Cloudflare Pages
+## Deploying to GitHub Pages
 
-1. Push this repo to GitHub.
-2. In the Cloudflare dashboard: **Workers & Pages → Create → Pages → Connect to Git** and select the repo.
-3. Build settings (usually auto-detected):
-   - **Framework preset:** Astro
-   - **Build command:** `npm run build`
-   - **Build output directory:** `dist`
-4. Deploy. Every push to the main branch auto-deploys; PRs get preview URLs.
+The existing `.github/workflows/deploy.yml` builds with Node.js 20 and publishes `dist` to GitHub Pages after a push to `main` or a manual workflow dispatch. Pull requests do not automatically deploy. Review changes on a branch before merging.
 
-Or deploy from your machine:
-
-```bash
-npm run build
-npx wrangler pages deploy dist
-```
+The Astro configuration uses `site: 'https://kofboy2000.github.io'` and `base: '/personal-blog'`. Keep that base path in internal links.
 
 ## Configuration
 
-Edit `src/config.ts` to change the site title, author, description, social links, and newsletter subscribe URL. Update `site` in `astro.config.mjs` to your final domain.
+Edit `src/config.ts` to change the site title, author, description, and verified profile links. Add X, Threads, or YouTube links only after selecting the author's branding accounts. Update `site` and `base` in `astro.config.mjs` if the public URL changes.
 
-## Newsletter
+## Subscription
 
-The subscribe form on `/subscribe` currently points to a placeholder endpoint. Swap the `action` in `src/pages/subscribe.astro` and the homepage form for your provider (Buttondown, Listmonk, Mailchimp, etc.). RSS and JSON feeds are available at `/rss.xml` and `/feed.json`.
+Email subscriptions are not enabled. `/subscribe` points readers to RSS; it does not collect email addresses. RSS and JSON feeds are available at `/personal-blog/rss.xml` and `/personal-blog/feed.json`.

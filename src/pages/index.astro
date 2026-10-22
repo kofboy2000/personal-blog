@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import PostCard from '../components/PostCard.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const postImportResult = import.meta.glob('./posts/*.{md,mdx}', { eager: true });
 const posts = Object.values(postImportResult)
@@ -10,11 +11,21 @@ const posts = Object.values(postImportResult)
 
 <Base>
   <section class="hero">
-    <h1>Hey there. 👋</h1>
-    <p>I'm Alex. I write about AI — LLMs, agents, and the weird new world of AI movies, animation and manga.</p>
+    <h1>송태의 · Taieui Song</h1>
+    <p>AI를 실제 제품으로 연결하는 엔지니어입니다.</p>
   </section>
 
-  <h2 class="section-title">Latest Posts</h2>
+  <section class="prose" aria-labelledby="start-here">
+    <h2 id="start-here">처음 오셨다면</h2>
+    <p>Android 플랫폼에서 Bixby의 LLM 응용까지 소프트웨어를 만들어 왔습니다. 이곳에는 모델을 제품에 연결하는 설계, 논문과 구현 사이에서 배운 것, AI로 직접 만드는 과정을 기록합니다.</p>
+    <ul>
+      <li><a href={`${base}/about/`}>소개 · 발표와 연구</a> — 어떤 일을 해왔는지 확인할 수 있습니다.</li>
+      <li><a href="https://aclanthology.org/2026.findings-eacl.327/">FINEST · Findings of EACL 2026</a> — 공동저자로 참여한 LLM 응답 연구입니다.</li>
+      <li><a href="https://2021.pycon.kr/session/12/">PyCon Korea 2021 발표</a> — 시계열을 이미지로 다루는 방법을 소개했습니다.</li>
+    </ul>
+  </section>
+
+  <h2 class="section-title">기존 글</h2>
   <div class="post-list">
     {posts.map((p: any) => (
       <PostCard
@@ -28,11 +39,7 @@ const posts = Object.values(postImportResult)
   </div>
 
   <div class="subscribe-box">
-    <h2>Subscribe</h2>
-    <p>If you want to stay up to date with my latest posts you can sign up to my newsletter. I promise I won't spam you.</p>
-    <form class="subscribe-form" action={`${import.meta.env.BASE_URL}/subscribe`} method="get">
-      <input type="email" name="email" placeholder="you@example.com" required />
-      <button type="submit">Subscribe</button>
-    </form>
+    <h2>새 글과 연락</h2>
+    <p><a href={`${base}/rss.xml`}>RSS로 새 글 구독하기</a> · <a href="https://www.linkedin.com/in/taieui-song">LinkedIn에서 연결하기</a></p>
   </div>
 </Base>
